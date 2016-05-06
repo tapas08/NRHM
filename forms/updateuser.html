@@ -1,0 +1,31 @@
+<form action="register.php" class="container-fluid" method="POST">
+	<div class="col-xs-12 reg-msg">
+		
+	</div>
+	<div class="form-group col-xs-8">
+		<label for="name" class="col-xs-6 col-md-2">Username</label>
+		<div class="col-xs-12 col-md-8">
+			<input type="text" name="name" id="name" class="form-control" placeholder="User Name" list="user-list" oninput="getList();">
+			<datalist id="user-list"></datalist>
+		</div>
+	</div>
+
+	<div class="form-group col-xs-8">
+		<label for="email" class="col-xs-6 col-md-2">Email</label>
+		<div class="col-xs-12 col-md-8">
+			<input type="email" name="email" id="email" class="form-control" placeholder="Email ID">
+		</div>
+	</div>
+
+	<div class="form-group col-xs-8">
+		<label for="password" class="col-xs-6 col-md-2">Password</label>
+		<div class="col-xs-12 col-md-8">
+			<a href="javascript:;" class="text-info" onclick="openPage('forms/changepassword.php', 'Change Password');">Change Password</a>
+		</div>
+	</div>
+	<div class="form-group col-md-8" id="generatedPassword"></div>
+	<div class="form-group col-md-8">
+		<input type="button" name="update" id="update" class="btn btn-primary" value="Update" onclick="update();">
+		<input type="reset" name="cancel" id="cancel" class="btn btn-warning" value="Cancel">
+	</div>
+</form>

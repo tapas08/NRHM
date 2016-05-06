@@ -1,0 +1,43 @@
+#map{
+	background: rgba(250, 133, 100, 1);
+	border-radius: 5px;
+}
+
+#map > div > img{
+	opacity: 0.8;
+}
+
+#wardha{
+    position: relative;
+    left: -172px;
+    top: -128px;
+    color: #F4F5F7;
+    text-shadow: 0px 0px 8px #333;
+    cursor: pointer;
+}
+
+#nagpur{
+    position: relative;
+    left: 71.5%;/* 444px;*/
+    top: -411px;
+    /*left: -179px;
+    top: -155px;*/
+    color: #F4F5F7;
+    text-shadow: 0px 0px 8px #333;
+    cursor: pointer;
+}
+
+#chandrapur{
+	position: relative;
+    left: 480px;
+    top: -335px;
+    /*left: -136px;
+    top: -80px;*/
+    color: #F4F5F7;
+    text-shadow: 0px 0px 8px #333;
+    cursor: pointer;
+}
+
+#place_details{
+	transition: all 1s ease-in;
+}

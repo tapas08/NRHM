@@ -4,25 +4,25 @@ require_once 'core/init.php';
 $msg = [];
 
 if (Input::exists()){
-	$db = DB::getInstance();
+	
+	$unique_id = substr(date('D'), 0, 3) . "-" . (1 + ((int)$count = DB::getInstance()->query("SELECT * FROM patients")->count())) . "/" . substr(date('Y'), 2);
 
 	$insertData = $db->insert('patients', array(
-			'first_name' =>Input::get('first_name'),
-			'middle_name' => Input::get('middle_name'),
-			'last_name' => Input::get('last_name'),
+			'first_name' =>Input::get('firstName'),
+			'middle_name' => Input::get('middleName'),
+			'last_name' => Input::get('lastName'),
 			'phone' => Input::get('phone'),
 			'age'=> Input::get('age'),
 			'sex' => Input::get('sex'),
 			'DOB' => Input::get('dob'),
 			'address' => Input::get('address'),
-			'place' => Input::get('city'),
-			'state' => Input::get('state'),
-			'opd' => Input::get('opd'),
+			'place' => Input::get('place'),
+			'village' => Input::get('village'),
 			'blood_group' => Input::get('bloodGroup'),
 			'diagnose' => Input::get('diagnose'),
 			'height' => Input::get('height'),
 			'weight' => Input::get('weight'),
-			'unique_id' => substr(uniqid(), 0, 8)
+			'unique_id' => $unique_id
 		));
 
 	if ($insertData){
@@ -81,8 +81,8 @@ if (Input::exists()){
 						<input type="number" id="age" name="age" class="form-control">
 					</div>
 					<div class="col-md-4">
-						<label for="age">Sex</label>
-						<select name="age" id="age" class="form-control">
+						<label for="sex">Sex</label>
+						<select name="sex" id="sex" class="form-control">
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
 							<option value="Transgender">Transgender</option>
@@ -100,8 +100,8 @@ if (Input::exists()){
 						<textarea id="address" name="address" rows="1" class="form-control"></textarea>
 					</div>
 					<div class='col-md-4'>
-						<label for="city">City/Town</label>
-						<select name="city" id="city" class="form-control">
+						<label for="place">Place</label>
+						<select name="place" id="place" class="form-control">
 							<option value="Nagpur">Nagpur</option>
 							<option value="Seloo">Seloo</option>
 							<option value="Arvi">Arvi</option>
@@ -111,23 +111,27 @@ if (Input::exists()){
 						</select>
 					</div>
 					<div class="col-md-4">
-						<label for="state">State</label>
-						<select name="state" id="state" class="form-control">
-							<option value="Maharashtra">Maharashtra</option>
-							<option value="Tamil Nadu">Tamil Nadu</option>
-							<option value="Gujrat">Gujrat</option>
-							<option value="Madhya Pradesh">Madhya Pradesh</option>
-							<option value="West Bengal">West Bengal</option>
-							<option value="Karnatak">Karnatak</option>
-						</select>
+						<label for="village">Village</label>
+						<input type="text" name="village" id="village" class="form-control" list="village_list">
+						<datalist id="village_list">
+						<?php
+							//$
+						?>
+						</datalist>
 					</div>
 				</div>
 
 				<div class="col-md-12">
-					<div class="col-md-4">
+					<!-- <div class="col-md-4">
 						<label for="opd">OPD</label>
 						<input type="text" id="opd" name="opd" class="form-control">
+					</div> -->
+
+					<div class="form-group col-md-4">
+						<label for="phone">Phone No.</label>
+						<input type="phone" id="phone" name='phone' class="form-control">
 					</div>
+
 					<div class="col-md-4">
 						<label for="bloodGroup">Blood Group</label>
 						<select name="bloodGroup" id="bloodGroup" class="form-control">
@@ -144,14 +148,14 @@ if (Input::exists()){
 					<div class="col-md-4">
 						<label for="diagnose">Diagnose</label>
 						<select name="diagnose" id="diagnose" class="form-control">
-							<option value="Psychosis">Psychosis</option>
-							<option value="Psychosis">Neurosis</option>
-							<option value="Psychosis">Depression</option>
-							<option value="Psychosis">Substance Abuse</option>
-							<option value="Psychosis">Child Mental Health Problem</option>
-							<option value="Psychosis">Epilepsy</option>
-							<option value="Psychosis">Mental Retardation</option>
-							<option value="Psychosis">Other</option>
+							<option>Psychosis</option>
+							<option>Neurosis</option>
+							<option>Depression</option>
+							<option>Substance Abuse</option>
+							<option>Child Mental Health Problem</option>
+							<option>Epilepsy</option>
+							<option>Mental Retardation</option>
+							<option>Other</option>
 						</select>
 					</div>
 				</div>
@@ -164,10 +168,6 @@ if (Input::exists()){
 					<div class="form-group  col-md-4">
 						<label for="weight">Weight</label>
 						<input type="text" id="weight" name="weight" class="form-control">
-					</div>
-					<div class="form-group col-md-4">
-						<label for="phone">Phone No.</label>
-						<input type="phone" id="phone" name='phone' class="form-control">
 					</div>
 				</div> 
 
